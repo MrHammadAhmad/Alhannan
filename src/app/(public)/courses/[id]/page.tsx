@@ -176,7 +176,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "quran-reading": {
     title: "Quran Reading Flow",
     category: "Quran Basics",
-    image: "https://images.unsplash.com/photo-1584286595398-a59f21d313f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    image: "https://i.pinimg.com/736x/b3/8a/fc/b38afce536e0ddb9cda9103186c9a224.jpg",
     tagline: "Build confidence and fluency in reading the full Holy Quran.",
     desc: "Designed for students who can recognize Arabic letters but struggle with flowing word joints or breathing pauses. We focus on daily reading practice directly from the Mus'haf, fixing pronunciation mistakes on the go and establishing natural, confident recitation habits.",
     duration: "6-8 Months (72 Sessions)",
