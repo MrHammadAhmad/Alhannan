@@ -496,8 +496,8 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
             <div className="lg:col-span-6 relative h-[350px] lg:h-[420px] rounded-[30px] overflow-hidden shadow-2xl">
               {course.image ? (
                 <>
-                  <img src={course.image} className="absolute inset-0 w-full h-full object-cover" alt={course.title} />
-                  <div className="absolute inset-0 bg-[#0b1221]/20 pointer-events-none mix-blend-multiply" />
+                  <img src={course.image} className="absolute inset-0 w-full h-full object-contain" alt={course.title} />
+                  <div className="absolute inset-0 pointer-events-none mix-blend-multiply" />
                 </>
               ) : (
                 <div className="absolute inset-0 bg-gray-800 animate-pulse" />
