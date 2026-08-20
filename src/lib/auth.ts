@@ -16,6 +16,21 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Missing email or password");
         }
 
+        if (
+          process.env.ADMIN_USERNAME &&
+          process.env.ADMIN_PASSWORD &&
+          credentials.email === process.env.ADMIN_USERNAME &&
+          credentials.password === process.env.ADMIN_PASSWORD
+        ) {
+          return {
+            id: "admin-env",
+            email: process.env.ADMIN_USERNAME,
+            name: "Super Admin",
+            role: "ADMIN",
+            emailVerified: new Date(),
+          };
+        }
+
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email

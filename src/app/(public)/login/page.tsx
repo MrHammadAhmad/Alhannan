@@ -81,17 +81,17 @@ function LoginForm() {
               </div>
             )}
             
-            {/* Email Address */}
+            {/* Email Address or Username */}
             <div className="space-y-1">
               <label className="text-xs font-bold text-gray-400 uppercase tracking-wider block">
-                Email Address
+                Email Address or Username
               </label>
               <div className="relative">
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
                 <input
-                  type="email"
+                  type="text"
                   required
-                  placeholder="name@example.com"
+                  placeholder="name@example.com or username"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-stone-900 border border-stone-850 hover:border-stone-800 focus:border-emerald-custom-light focus:ring-1 focus:ring-emerald-custom-light rounded-xl py-3 pl-10 pr-4 text-sm text-white placeholder-gray-650 transition-all outline-none"
