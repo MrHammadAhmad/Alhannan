@@ -1,0 +1,160 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+enum CourseCategory {
+  QAIDA
+  NAZRA
+  HIFZ
+}
+
+enum RegistrationStatus {
+  PENDING_EMAIL_VERIFICATION
+  ACTIVE
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+
+enum FeeStatus {
+  PAID
+  PARTIAL
+  UNPAID
+  OVERDUE
+}
+
+model User {
+  id            String   @id @default(cuid())
+  name          String
+  email         String   @unique
+  phone         String?
+  password      String
+  role          Role
+  emailVerified DateTime?
+  createdAt     DateTime @default(now())
+
+  // Teacher-only
+  teacherProfile TeacherProfile?
+  // Student-only
+  studentProfile StudentProfile?
+}
+
+model TeacherProfile {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio          String?
+  qualification String?
+  monthlySalaryAmount Decimal?
+  batches      Batch[]
+  salaryPayments SalaryPayment[]
+}
+
+model StudentProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fatherName    String?
+  address       String?
+  country       String?
+  age           Int?
+  registrations Registration[]
+}
+
+model Course {
+  id             String         @id @default(cuid())
+  name           String
+  category       CourseCategory
+  classesPerWeek Int
+  price          Decimal
+  currency       String         @default("PKR")
+  timingNote     String?        // e.g. "Mon/Wed/Fri 6-7 PM"
+  description    String?
+  isActive       Boolean        @default(true)
+  batches        Batch[]
+  registrations  Registration[]
+  createdAt      DateTime       @default(now())
+}
+
+model Batch {
+  id          String   @id @default(cuid())
+  name        String   // e.g. "Hifz - Evening Batch A"
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  teacherId   String
+  teacher     TeacherProfile @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  daysOfWeek  String[]  // ["Mon","Wed","Fri"]
+  time        String    // "18:00-19:00" or store timezone-aware DateTime slots
+  liveClassLink String?
+  registrations Registration[]
+  recordings  ClassRecording[]
+  attendance  AttendanceRecord[]
+}
+
+model Registration {
+  id           String   @id @default(cuid())
+  studentId    String
+  student      StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  courseId     String
+  course       Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  batchId      String?
+  batch        Batch?   @relation(fields: [batchId], references: [id], onDelete: SetNull)
+  preferredTeacherId String?  // teacher selected at registration time
+  status       RegistrationStatus @default(PENDING_EMAIL_VERIFICATION)
+  registeredAt DateTime @default(now())
+  feeRecords   FeeRecord[]
+}
+
+model FeeRecord {
+  id             String   @id @default(cuid())
+  registrationId String
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  month          String   // "2026-08"
+  amountDue      Decimal
+  amountPaid     Decimal  @default(0)
+  status         FeeStatus @default(UNPAID)
+  paidAt         DateTime?
+  updatedBy      String   // admin userId
+}
+
+model SalaryPayment {
+  id         String   @id @default(cuid())
+  teacherId  String
+  teacher    TeacherProfile @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  month      String   // "2026-08"
+  amount     Decimal
+  paidAt     DateTime @default(now())
+  paidBy     String   // admin userId
+}
+
+model AttendanceRecord {
+  id        String   @id @default(cuid())
+  batchId   String
+  batch     Batch    @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  studentId String
+  date      DateTime
+  status    String   // "PRESENT" | "ABSENT" | "LEAVE"
+  markedBy  String   // teacher userId
+}
+
+model ClassRecording {
+  id        String   @id @default(cuid())
+  batchId   String
+  batch     Batch    @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  title     String
+  url       String
+  classDate DateTime
+  uploadedBy String
+}

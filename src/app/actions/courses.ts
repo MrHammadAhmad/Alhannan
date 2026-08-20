@@ -1,0 +1,65 @@
+"use server";
+
+import { prisma } from "@/lib/prisma";
+import { CourseCategory } from "@prisma/client";
+
+export async function getActiveCourses(category?: CourseCategory) {
+  try {
+    const courses = await prisma.course.findMany({
+      where: {
+        isActive: true,
+        ...(category ? { category } : {}),
+      },
+      select: {
+        id: true,
+        name: true,
+        category: true,
+        price: true,
+        currency: true,
+      }
+    });
+    return courses;
+  } catch (error) {
+    console.error("Failed to get courses:", error);
+    return [];
+  }
+}
+
+export async function getTeachersForCourse(courseId: string) {
+  try {
+    // Find all batches for this course to get the teachers
+    const batches = await prisma.batch.findMany({
+      where: {
+        courseId,
+      },
+      include: {
+        teacher: {
+          include: {
+            user: {
+              select: {
+                name: true,
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Extract unique teachers
+    const teachersMap = new Map();
+    batches.forEach(batch => {
+      if (!teachersMap.has(batch.teacherId)) {
+        teachersMap.set(batch.teacherId, {
+          id: batch.teacherId,
+          name: batch.teacher.user.name,
+          bio: batch.teacher.bio,
+        });
+      }
+    });
+
+    return Array.from(teachersMap.values());
+  } catch (error) {
+    console.error("Failed to get teachers:", error);
+    return [];
+  }
+}
