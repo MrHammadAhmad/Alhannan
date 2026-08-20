@@ -51,7 +51,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "noorani-qaida": {
     title: "Noorani Qaida Phonics",
     category: "Quran Basics",
-    image: "https://i.pinimg.com/1200x/40/3a/eb/403aeb836676cce96bb8b33a86827fca.jpg",
+    image: "https://i.pinimg.com/736x/90/75/cd/9075cd02ce929d3c69182bf683653ff0.jpg",
     tagline: "Build a strong foundation for fluent, beautiful Arabic recitation from day one.",
     desc: "This course is the vital first step for children and adult beginners. It focuses on the letters of the Arabic alphabet, correct pronunciation points (Makharij), phonetic joints, and vowel markings. Under the 1-on-1 guidance of our patient tutors, you will master the rules of joining letters to confidently read full Arabic words and verses.",
     duration: "3-4 Months (36 Sessions)",
