@@ -314,7 +314,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "tafseer-quran": {
     title: "Tafseer (Quran Explanation)",
     category: "Quranic Sciences",
-    image: "https://images.unsplash.com/photo-1519817914152-2a35016d476e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    image: "https://i.pinimg.com/1200x/a0/9a/25/a09a253d6d1643fe4822989e4098f977.jpg",
     tagline: "Understand the context, stories, and guidance of Quranic verses.",
     desc: "A deep dive into the historical background, causes of revelation (Asbab al-Nuzul), and practical directives of Quranic verses. Helps students implement the Quranic message in their lives.",
     duration: "12 Months (96 Sessions)",
