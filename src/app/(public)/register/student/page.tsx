@@ -7,8 +7,9 @@ import { User, Lock, Mail, Phone, MapPin, Calendar, BookOpen, AlertCircle, Check
 import { getActiveCourses, getTeachersForCourse } from "@/app/actions/courses";
 import { registerStudent } from "@/app/actions/register";
 import { CourseCategory } from "@prisma/client";
+import { Suspense } from "react";
 
-export default function StudentRegistrationPage() {
+function StudentRegistrationForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") as CourseCategory | null;
@@ -236,5 +237,13 @@ export default function StudentRegistrationPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function StudentRegistrationPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-stone-950 flex items-center justify-center text-white">Loading...</div>}>
+      <StudentRegistrationForm />
+    </Suspense>
   );
 }

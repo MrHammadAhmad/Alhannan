@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { DashboardLayout } from "@/components/DashboardLayout";
 import { LayoutDashboard, Users, BookOpen, Clock, Settings, GraduationCap, DollarSign } from "lucide-react";
