@@ -205,7 +205,7 @@ function StudentRegistrationForm() {
                   >
                     <option value="">Any Available Teacher</option>
                     {teachers.map(t => (
-                      <option key={t.id} value={t.id}>{t.name} {t.bio ? `- ${t.bio}` : ''}</option>
+                      <option key={t.id} value={t.id}>{t.name} {t.qualification ? `- ${t.qualification}` : ''} {t.bio ? `(${t.bio})` : ''}</option>
                     ))}
                   </select>
                 </div>

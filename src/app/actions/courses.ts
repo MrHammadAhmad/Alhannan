@@ -52,6 +52,7 @@ export async function getTeachersForCourse(courseId: string) {
         teachersMap.set(batch.teacherId, {
           id: batch.teacherId,
           name: batch.teacher.user.name,
+          qualification: batch.teacher.qualification,
           bio: batch.teacher.bio,
         });
       }

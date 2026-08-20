@@ -10,6 +10,7 @@ export async function createTeacher(formData: FormData) {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const phone = formData.get("phone") as string;
+    const qualification = formData.get("qualification") as string;
     const bio = formData.get("bio") as string;
 
     if (!name || !email || !password) {
@@ -37,6 +38,7 @@ export async function createTeacher(formData: FormData) {
       await tx.teacherProfile.create({
         data: {
           userId: user.id,
+          qualification: qualification || null,
           bio: bio || null,
         },
       });

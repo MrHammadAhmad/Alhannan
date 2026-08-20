@@ -72,9 +72,13 @@ export function TeachersClient({ teachers }: { teachers: any[] }) {
                 <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Phone</label>
                 <input name="phone" placeholder="Optional Phone Number" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
               </div>
-              <div className="md:col-span-2">
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Qualification</label>
+                <input name="qualification" autoComplete="off" placeholder="E.g. Hafiz-e-Quran, MA Islamic Studies" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
+              </div>
+              <div>
                 <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Bio / Specialties</label>
-                <input name="bio" placeholder="E.g. Certified in Tajweed, 10 years experience" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
+                <input name="bio" autoComplete="off" placeholder="E.g. 10 years experience" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
               </div>
             </div>
             <div className="flex justify-end pt-4">
@@ -93,7 +97,7 @@ export function TeachersClient({ teachers }: { teachers: any[] }) {
               <tr>
                 <th className="px-6 py-4">Teacher Info</th>
                 <th className="px-6 py-4">Contact</th>
-                <th className="px-6 py-4">Bio</th>
+                <th className="px-6 py-4">Qualification / Bio</th>
                 <th className="px-6 py-4">Assigned Batches</th>
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
@@ -123,7 +127,8 @@ export function TeachersClient({ teachers }: { teachers: any[] }) {
                     )}
                   </td>
                   <td className="px-6 py-4 text-xs max-w-[200px] truncate" title={teacher.teacherProfile?.bio}>
-                    {teacher.teacherProfile?.bio || "-"}
+                    {teacher.teacherProfile?.qualification ? <div className="font-bold text-gray-700">{teacher.teacherProfile.qualification}</div> : null}
+                    <div className="text-gray-500">{teacher.teacherProfile?.bio || "-"}</div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-1.5 font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
