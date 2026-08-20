@@ -118,8 +118,8 @@ export function TeachersClient({ teachers }: { teachers: any[] }) {
                   </td>
                   <td className="px-6 py-4 space-y-1">
                     <div className="flex items-center text-xs"><Mail className="w-3 h-3 mr-1.5" /> {teacher.email}</div>
-                    {teacher.teacherProfile?.phone && (
-                      <div className="flex items-center text-xs"><Phone className="w-3 h-3 mr-1.5" /> {teacher.teacherProfile.phone}</div>
+                    {teacher.phone && (
+                      <div className="flex items-center text-xs"><Phone className="w-3 h-3 mr-1.5" /> {teacher.phone}</div>
                     )}
                   </td>
                   <td className="px-6 py-4 text-xs max-w-[200px] truncate" title={teacher.teacherProfile?.bio}>

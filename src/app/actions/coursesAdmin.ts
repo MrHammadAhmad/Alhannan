@@ -21,6 +21,7 @@ export async function createCourse(formData: FormData) {
       data: {
         name,
         category,
+        classesPerWeek: 3,
         price,
         currency,
         description: description || null,

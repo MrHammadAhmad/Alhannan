@@ -30,13 +30,13 @@ export async function createTeacher(formData: FormData) {
           email,
           password: hashedPassword,
           role: "TEACHER",
+          phone: phone || null,
         },
       });
 
       await tx.teacherProfile.create({
         data: {
           userId: user.id,
-          phone: phone || null,
           bio: bio || null,
         },
       });
