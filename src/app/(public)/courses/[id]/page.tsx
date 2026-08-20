@@ -222,7 +222,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "arabic-language": {
     title: "Arabic Language Grammar",
     category: "Arabic Studies",
-    image: "https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    image: "https://i.pinimg.com/736x/b0/16/2c/b0162cb91c7f791ab5e4a0d29728ed19.jpg",
     tagline: "Decode the grammar and vocabulary of the Holy Quran.",
     desc: "A structural grammar and vocabulary course designed to translate and understand the Holy Quran directly. Covers core noun and verb structures (Sarf and Nahw) alongside everyday conversation.",
     duration: "12 Months (144 Sessions)",
