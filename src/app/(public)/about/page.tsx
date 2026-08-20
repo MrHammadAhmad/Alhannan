@@ -22,16 +22,16 @@ export default function AboutPage() {
   return (
     <div className="space-y-20 pb-20">
       {/* Page Hero */}
-      <section className="bg-emerald-custom/5 py-16 text-center space-y-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-10 pointer-events-none mix-blend-multiply" />
+      <section className="bg-emerald-custom py-16 text-center space-y-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-20 pointer-events-none mix-blend-overlay" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
-          <span className="text-xs font-bold text-emerald-custom uppercase tracking-widest bg-emerald-custom/10 px-3 py-1 rounded-full">
+          <span className="text-xs font-bold text-emerald-950 uppercase tracking-widest bg-white/90 px-3 py-1 rounded-full shadow-sm">
             Who We Are
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-navy-custom leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight">
             Nurturing Quranic Literacy & Islamic Character
           </h1>
-          <p className="text-sm sm:text-base text-gray-500 font-medium max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-emerald-50 font-medium max-w-xl mx-auto leading-relaxed">
             Hannan Consultants is an international online Quran academy dedicated to providing structured Tajweed, Arabic, and Islamic education to families worldwide.
           </p>
         </div>

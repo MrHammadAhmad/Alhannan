@@ -76,17 +76,17 @@ export default function FeePage() {
   return (
     <div className="space-y-16 pb-20">
       {/* Header banner */}
-      <section className="bg-emerald-custom/5 py-16 text-center space-y-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-10 pointer-events-none mix-blend-multiply" />
+      <section className="bg-emerald-custom py-16 text-center space-y-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-20 pointer-events-none mix-blend-overlay" />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 relative z-10">
-          <span className="text-xs font-bold text-emerald-custom uppercase tracking-widest bg-emerald-custom/10 px-3.5 py-1 rounded-full">
+          <span className="text-xs font-bold text-emerald-950 uppercase tracking-widest bg-white/90 px-3.5 py-1 rounded-full shadow-sm">
             Transparent Tuition Hadya
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-navy-custom leading-tight">
-            Hadya & Fee Structures
+          <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight">
+            Invest in Your Hereafter with Affordable Plans
           </h1>
-          <p className="text-sm sm:text-base text-gray-500 font-medium max-w-xl mx-auto">
-            Affordable monthly packages for 1-on-1 live classes. Start with our 3-Class Free Trial. No contracts, cancel anytime.
+          <p className="text-sm sm:text-base text-emerald-50 font-medium max-w-xl mx-auto leading-relaxed">
+            We believe Quranic education should be accessible to every family. Choose a plan that fits your schedule and budget.
           </p>
         </div>
       </section>

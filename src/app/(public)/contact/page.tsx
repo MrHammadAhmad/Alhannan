@@ -52,14 +52,14 @@ export default function ContactPage() {
   return (
     <div className="space-y-16 pb-20">
       {/* Header Banner */}
-      <section className="bg-emerald-custom/5 py-12 text-center space-y-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-10 pointer-events-none mix-blend-multiply" />
+      <section className="bg-emerald-custom py-12 text-center space-y-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-20 pointer-events-none mix-blend-overlay" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
-          <h1 className="text-3xl sm:text-5xl font-black text-navy-custom">
+          <h1 className="text-3xl sm:text-5xl font-black text-white">
             Contact Admissions
           </h1>
-          <p className="text-xs sm:text-sm text-gray-500 font-semibold uppercase tracking-wide">
-            Get in touch with our administrators or schedule a demo call.
+          <p className="text-xs sm:text-sm text-emerald-50 font-semibold uppercase tracking-wide">
+            We're here to help you register, choose the right teacher, or answer any queries.
           </p>
         </div>
       </section>
