@@ -114,6 +114,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "quran-tajweed": {
     title: "Quran Recitation with Tajweed",
     category: "Tajweed Mastery",
+    image: "https://images.unsplash.com/photo-1609599006353-e629aaab3151?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tagline: "Recite the Holy Quran with the exact rules and beautiful tone of the Prophet (PBUH).",
     desc: "Tajweed is the art of reciting the Quran with correct pronunciation of Arabic letters, understanding where to pause, how long to stretch vowels, and how to control nasal sounds. This course bridges the gap between simple reading and professional recitation. You will study classical tajweed rules alongside direct practice of selected Surahs.",
     duration: "6-12 Months (72 Sessions)",
@@ -175,6 +176,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "quran-reading": {
     title: "Quran Reading Flow",
     category: "Quran Basics",
+    image: "https://images.unsplash.com/photo-1584286595398-a59f21d313f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tagline: "Build confidence and fluency in reading the full Holy Quran.",
     desc: "Designed for students who can recognize Arabic letters but struggle with flowing word joints or breathing pauses. We focus on daily reading practice directly from the Mus'haf, fixing pronunciation mistakes on the go and establishing natural, confident recitation habits.",
     duration: "6-8 Months (72 Sessions)",
@@ -220,6 +222,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "arabic-language": {
     title: "Arabic Language Grammar",
     category: "Arabic Studies",
+    image: "https://images.unsplash.com/photo-1546422904-90eab23c3d7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tagline: "Decode the grammar and vocabulary of the Holy Quran.",
     desc: "A structural grammar and vocabulary course designed to translate and understand the Holy Quran directly. Covers core noun and verb structures (Sarf and Nahw) alongside everyday conversation.",
     duration: "12 Months (144 Sessions)",
@@ -265,6 +268,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "islamic-studies": {
     title: "Islamic Studies & Fiqh",
     category: "Fiqh & History",
+    image: "https://images.unsplash.com/photo-1567117632960-56e34a4c2456?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tagline: "Build a comprehensive understanding of core Islamic beliefs and practices.",
     desc: "Covers the fundamental principles of Islam, Aqeedah (creed), Seerah (prophetic biography), Islamic history, and daily jurisprudence (rules of prayer, fasting, and purity). Suitable for children and adults.",
     duration: "6 Months (48 Sessions)",
@@ -310,6 +314,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "tafseer-quran": {
     title: "Tafseer (Quran Explanation)",
     category: "Quranic Sciences",
+    image: "https://images.unsplash.com/photo-1519817914152-2a35016d476e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tagline: "Understand the context, stories, and guidance of Quranic verses.",
     desc: "A deep dive into the historical background, causes of revelation (Asbab al-Nuzul), and practical directives of Quranic verses. Helps students implement the Quranic message in their lives.",
     duration: "12 Months (96 Sessions)",
@@ -355,6 +360,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "hadith-studies": {
     title: "Hadith Studies (Riyadhus Saliheen)",
     category: "Prophetic Traditions",
+    image: "https://images.unsplash.com/photo-1616688127644-88fc56641566?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tagline: "Learn the sayings and model character of the Prophet (PBUH).",
     desc: "Studies Riyadhus Saliheen, the classic compilation of authentic traditions. Focuses on character, purification of the heart, etiquettes, and community interactions.",
     duration: "6 Months (48 Sessions)",
@@ -400,6 +406,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "hajj-information": {
     title: "Hajj & Umrah Information Guide",
     category: "Islamic Practices",
+    image: "https://images.unsplash.com/photo-1565552643982-14dc298b42fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tagline: "Prepare practically and spiritually for the journey of a lifetime.",
     desc: "A comprehensive practical guide explaining the rules, supplications, and steps to perform Hajj and Umrah. Perfect for prospective pilgrims wanting to perform their rituals correctly according to the Sunnah.",
     duration: "1 Month (12 Sessions)",
@@ -455,92 +462,46 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
   return (
     <div className="space-y-16 pb-20">
       {/* Course Hero Banner */}
-      <section className="bg-navy-custom text-white py-16 relative overflow-hidden">
-        {/* Subtle Islamic pattern bg */}
-        <div className="absolute inset-0 bg-islamic-pattern opacity-5" />
+      <section className="bg-[#0b1221] text-white py-16 sm:py-24 relative overflow-hidden">
+        {/* Glow Effect */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[100px] pointer-events-none transform translate-x-1/3 -translate-y-1/3" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Title & Info */}
-            <div className="lg:col-span-8 space-y-8">
-              <span className="px-3 py-1 rounded-full bg-emerald-custom text-xs font-bold uppercase tracking-wider">
-                {course.category}
-              </span>
-              <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-6 space-y-8">
+              <Link href="/courses" className="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors">
+                <span className="mr-2">←</span> Back to Services
+              </Link>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] text-white">
                 {course.title}
               </h1>
-              <p className="text-base sm:text-lg text-gray-300 max-w-2xl font-medium">
+              
+              <p className="text-lg text-gray-300 font-medium max-w-lg leading-relaxed">
                 {course.tagline}
               </p>
 
-              <div className="flex flex-wrap gap-6 items-center text-sm font-semibold text-gray-300 pt-2">
-                <div className="flex items-center space-x-1">
-                  <Star className="h-4 w-4 fill-gold-custom text-gold-custom" />
-                  <span>{course.rating} Rating</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Users className="h-4 w-4 text-emerald-custom-light" />
-                  <span>{course.students}+ Enrolled</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Clock className="h-4 w-4 text-emerald-custom-light" />
-                  <span>{course.duration}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Award className="h-4 w-4 text-emerald-custom-light" />
-                  <span>Level: {course.level}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar CTA block */}
-            <div className="lg:col-span-4 space-y-6">
-              {course.image && (
-                <div className="w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-emerald-custom/30 relative transform hover:scale-105 transition-transform duration-500">
-                  <img src={course.image} className="w-full h-full object-cover" alt={course.title} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-custom/40 to-transparent" />
-                </div>
-              )}
-              
-              <div className="bg-white text-navy-custom p-6 rounded-3xl shadow-2xl border border-gray-100 space-y-6">
-              <div className="space-y-2">
-                <span className="text-xs text-gray-400 font-bold block">Tuition Fees starts at:</span>
-                <div className="flex items-baseline space-x-2">
-                  <span className="text-3xl font-black text-emerald-custom">{course.price}</span>
-                </div>
-                <p className="text-[10px] text-gray-400">Includes 3 free classes. Cancel subscription anytime.</p>
-              </div>
-
-              <div className="space-y-3">
+              <div className="pt-2">
                 <Link
                   href="/register"
-                  className="block w-full text-center py-3 bg-emerald-custom hover:bg-emerald-900 text-white font-bold text-sm rounded-xl shadow-md transition-colors"
+                  className="inline-block bg-[#3b82f6] hover:bg-blue-600 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition-transform hover:scale-105 text-sm"
                 >
                   Start 3-Class Free Trial
                 </Link>
-                <Link
-                  href="/contact"
-                  className="block w-full text-center py-3 border border-gray-200 hover:border-emerald-custom hover:text-emerald-custom text-xs font-bold text-navy-custom rounded-xl transition-all"
-                >
-                  Inquire Tuition Fees Structure
-                </Link>
               </div>
+            </div>
 
-              <div className="border-t border-gray-100 pt-4 space-y-2 text-xs font-semibold text-gray-600">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-emerald-custom" />
-                  <span>1-on-1 Individual Classes</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-emerald-custom" />
-                  <span>Female Teachers Available</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-emerald-custom" />
-                  <span>Reschedule Classes up to 4h before</span>
-                </div>
-              </div>
-              </div>
+            {/* Right Image */}
+            <div className="lg:col-span-6 relative h-[350px] lg:h-[420px] rounded-[30px] overflow-hidden shadow-2xl">
+              {course.image ? (
+                <>
+                  <img src={course.image} className="absolute inset-0 w-full h-full object-cover" alt={course.title} />
+                  <div className="absolute inset-0 bg-[#0b1221]/20 pointer-events-none mix-blend-multiply" />
+                </>
+              ) : (
+                <div className="absolute inset-0 bg-gray-800 animate-pulse" />
+              )}
             </div>
           </div>
         </div>
@@ -551,6 +512,27 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Details column */}
           <div className="lg:col-span-8 space-y-12">
+            
+            {/* Course Stats Banner */}
+            <div className="flex flex-wrap gap-4 sm:gap-8 p-6 bg-white border border-gray-100 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] text-sm font-semibold text-navy-custom">
+              <div className="flex items-center space-x-2">
+                <Star className="h-5 w-5 fill-gold-custom text-gold-custom" />
+                <span className="text-gray-700">{course.rating} Rating</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Users className="h-5 w-5 text-emerald-custom" />
+                <span className="text-gray-700">{course.students}+ Enrolled</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Clock className="h-5 w-5 text-emerald-custom" />
+                <span className="text-gray-700">{course.duration}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Award className="h-5 w-5 text-emerald-custom" />
+                <span className="text-gray-700">Level: {course.level}</span>
+              </div>
+            </div>
+
             {/* Description */}
             <div className="space-y-4">
               <h2 className="text-2xl font-bold text-navy-custom">Course Overview</h2>
@@ -625,8 +607,49 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
             </div>
           </div>
 
-          {/* Teacher and FAQ Column */}
+          {/* Sidebar Right Column */}
           <div className="lg:col-span-4 space-y-8">
+            {/* Pricing & CTA Card (Moved from Hero) */}
+            <div className="bg-white text-navy-custom p-6 sm:p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 space-y-6">
+              <div className="space-y-2">
+                <span className="text-[11px] text-gray-400 font-bold block uppercase tracking-wider">Tuition Fees starts at:</span>
+                <div className="flex items-baseline space-x-2">
+                  <span className="text-4xl font-black text-emerald-custom">{course.price}</span>
+                </div>
+                <p className="text-[11px] text-gray-500 font-medium">Includes 3 free classes. Cancel subscription anytime.</p>
+              </div>
+
+              <div className="space-y-3">
+                <Link
+                  href="/register"
+                  className="block w-full text-center py-3.5 bg-emerald-custom hover:bg-emerald-900 text-white font-bold text-sm rounded-xl shadow-md transition-colors"
+                >
+                  Start 3-Class Free Trial
+                </Link>
+                <Link
+                  href="/contact"
+                  className="block w-full text-center py-3.5 border-2 border-gray-100 hover:border-emerald-custom hover:text-emerald-custom text-xs font-bold text-navy-custom rounded-xl transition-all"
+                >
+                  Inquire Tuition Fees Structure
+                </Link>
+              </div>
+
+              <div className="border-t border-gray-100 pt-5 space-y-3 text-xs font-semibold text-gray-600">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-custom shrink-0" />
+                  <span>1-on-1 Individual Classes</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-custom shrink-0" />
+                  <span>Female Teachers Available</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-custom shrink-0" />
+                  <span>Reschedule Classes up to 4h before</span>
+                </div>
+              </div>
+            </div>
+
             {/* Lead Teacher Widget */}
             <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm space-y-4">
               <h3 className="text-base font-bold text-navy-custom border-b border-gray-100 pb-3">
