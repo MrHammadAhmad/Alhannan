@@ -541,6 +541,7 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
                   <span>Reschedule Classes up to 4h before</span>
                 </div>
               </div>
+              </div>
             </div>
           </div>
         </div>
