@@ -463,7 +463,7 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
     <div className="space-y-16 pb-20">
       {/* Course Hero Banner */}
       <section className="bg-[#0b1221] text-white py-16 sm:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.3, mixBlendMode: 'screen', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.4, mixBlendMode: 'screen', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         {/* Glow Effect */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[100px] pointer-events-none transform translate-x-1/3 -translate-y-1/3" />
         

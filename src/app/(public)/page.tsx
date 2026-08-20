@@ -197,7 +197,7 @@ export default function HomePage() {
         className="relative overflow-hidden pt-20 pb-16 lg:pt-24 lg:pb-28 bg-cover bg-center text-white"
         style={{ backgroundImage: "url('/HeroSection.png')" }}
       >
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.3, mixBlendMode: 'screen', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.4, mixBlendMode: 'screen', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         {/* Subtle gradient overlay to darken background behind left-aligned text, keeping right side fully visible and sharp */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/10 rtl:bg-gradient-to-l rtl:from-black/90 rtl:via-black/60 rtl:to-black/10" />
 

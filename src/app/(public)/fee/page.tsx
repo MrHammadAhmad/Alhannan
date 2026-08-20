@@ -77,7 +77,7 @@ export default function FeePage() {
     <div className="space-y-16 pb-20">
       {/* Header banner */}
       <section className="bg-emerald-custom/5 py-16 text-center space-y-4 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.3, mixBlendMode: 'multiply', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.4, mixBlendMode: 'multiply', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 relative z-10">
           <span className="text-xs font-bold text-emerald-custom uppercase tracking-widest bg-emerald-custom/10 px-3.5 py-1 rounded-full">
             Transparent Tuition Hadya
