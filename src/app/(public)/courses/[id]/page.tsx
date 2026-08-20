@@ -268,7 +268,7 @@ const mockCourseData: Record<string, CourseDetails> = {
   "islamic-studies": {
     title: "Islamic Studies & Fiqh",
     category: "Fiqh & History",
-    image: "https://images.unsplash.com/photo-1567117632960-56e34a4c2456?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    image: "https://i.pinimg.com/1200x/54/af/9f/54af9fa9dcc900404a6f0a1f68894634.jpg",
     tagline: "Build a comprehensive understanding of core Islamic beliefs and practices.",
     desc: "Covers the fundamental principles of Islam, Aqeedah (creed), Seerah (prophetic biography), Islamic history, and daily jurisprudence (rules of prayer, fasting, and purity). Suitable for children and adults.",
     duration: "6 Months (48 Sessions)",
