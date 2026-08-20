@@ -22,8 +22,9 @@ export default function AboutPage() {
   return (
     <div className="space-y-20 pb-20">
       {/* Page Hero */}
-      <section className="bg-emerald-custom/5 py-16 text-center space-y-4">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+      <section className="bg-emerald-custom/5 py-16 text-center space-y-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-[0.03] pointer-events-none mix-blend-multiply" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
           <span className="text-xs font-bold text-emerald-custom uppercase tracking-widest bg-emerald-custom/10 px-3 py-1 rounded-full">
             Who We Are
           </span>

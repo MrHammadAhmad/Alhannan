@@ -96,8 +96,9 @@ export default function TeacherProfilePage({ params }: { params: Promise<{ id: s
   return (
     <div className="space-y-16 pb-20">
       {/* Profile Header */}
-      <section className="bg-emerald-custom/5 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-emerald-custom/5 py-12 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-[0.03] pointer-events-none mix-blend-multiply" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             {/* Avatar Circle */}
             <div className={`w-24 h-24 sm:w-32 sm:h-32 rounded-2xl ${teacher.avatarColor} text-white flex items-center justify-center font-black text-4xl sm:text-5xl shadow-md shrink-0`}>
