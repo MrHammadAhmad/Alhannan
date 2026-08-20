@@ -114,8 +114,8 @@ const mockCourseData: Record<string, CourseDetails> = {
   "quran-tajweed": {
     title: "Quran Recitation with Tajweed",
     category: "Tajweed Mastery",
-    image: "https://images.unsplash.com/photo-1609599006353-e629aaab3151?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    tagline: "Recite the Holy Quran with the exact rules and beautiful tone of the Prophet (PBUH).",
+    image: "https://i.pinimg.com/736x/35/30/6c/35306c28e77781a4409b17847336fd75.jpg",
+    tagline: "Beautify your recitation by applying authentic rules (Makharij & Sifat).",
     desc: "Tajweed is the art of reciting the Quran with correct pronunciation of Arabic letters, understanding where to pause, how long to stretch vowels, and how to control nasal sounds. This course bridges the gap between simple reading and professional recitation. You will study classical tajweed rules alongside direct practice of selected Surahs.",
     duration: "6-12 Months (72 Sessions)",
     level: "Intermediate",
