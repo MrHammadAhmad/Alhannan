@@ -24,9 +24,11 @@ export async function registerStudent(formData: FormData) {
     const result = studentRegisterSchema.safeParse(data);
 
     if (!result.success) {
+      const fieldErrors = result.error.flatten().fieldErrors;
+      const firstError = Object.values(fieldErrors).flat()[0] as string;
       return { 
-        error: "Validation failed", 
-        details: result.error.flatten().fieldErrors 
+        error: firstError || "Validation failed", 
+        details: fieldErrors 
       };
     }
 
