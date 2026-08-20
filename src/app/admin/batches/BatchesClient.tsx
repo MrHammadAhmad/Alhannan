@@ -67,7 +67,7 @@ export function BatchesClient({ batches, courses, teachers }: { batches: any[], 
                 <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Teacher</label>
                 <select name="teacherId" required className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all appearance-none">
                   <option value="">Assign a Teacher</option>
-                  {teachers.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+                  {teachers.map(t => <option key={t.id} value={t.id}>{t.user?.name || t.name}</option>)}
                 </select>
               </div>
 

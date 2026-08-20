@@ -13,7 +13,7 @@ export default async function BatchesPage() {
       }
     }),
     prisma.course.findMany({ where: { isActive: true }, select: { id: true, name: true } }),
-    prisma.user.findMany({ where: { role: "TEACHER" }, select: { id: true, name: true } }),
+    prisma.teacherProfile.findMany({ include: { user: { select: { name: true } } } }),
   ]);
 
   return <BatchesClient batches={batches} courses={courses} teachers={teachers} />;
