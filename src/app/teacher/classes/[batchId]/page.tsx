@@ -6,7 +6,8 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import { AttendanceClient } from "./AttendanceClient";
 
-export default async function BatchAttendancePage({ params }: { params: { batchId: string } }) {
+export default async function BatchAttendancePage(props: { params: Promise<{ batchId: string }> }) {
+  const params = await props.params;
   const session = await getServerSession(authOptions);
   
   const batch = await prisma.batch.findUnique({
