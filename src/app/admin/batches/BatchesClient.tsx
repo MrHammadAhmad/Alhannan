@@ -1,0 +1,150 @@
+"use client";
+
+import React, { useState } from "react";
+import { createBatch, deleteBatch } from "@/app/actions/batchesAdmin";
+import { Clock, Plus, Trash2, Video, Users, Calendar, AlertCircle } from "lucide-react";
+
+export function BatchesClient({ batches, courses, teachers }: { batches: any[], courses: any[], teachers: any[] }) {
+  const [isAdding, setIsAdding] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+    const formData = new FormData(e.currentTarget);
+    const res = await createBatch(formData);
+    if (res.error) {
+      setError(res.error);
+    } else {
+      setIsAdding(false);
+    }
+    setIsSubmitting(false);
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h2 className="text-2xl font-bold text-navy-custom">Manage Batches</h2>
+          <p className="text-sm text-gray-500">Assign teachers and schedule course batches.</p>
+        </div>
+        <button 
+          onClick={() => setIsAdding(!isAdding)}
+          className="px-4 py-2 bg-emerald-custom hover:bg-emerald-600 text-white font-bold text-sm rounded-xl transition-colors shadow-sm flex items-center space-x-2"
+        >
+          <Plus className="w-4 h-4" />
+          <span>{isAdding ? "Cancel" : "Add Batch"}</span>
+        </button>
+      </div>
+
+      {isAdding && (
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8 animate-in fade-in slide-in-from-top-4">
+          <h3 className="text-lg font-bold text-navy-custom mb-4">Create New Batch</h3>
+          <form onSubmit={handleSubmit} className="space-y-4">
+             {error && (
+              <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm flex items-center space-x-2 border border-red-100">
+                <AlertCircle className="w-4 h-4" />
+                <span>{error}</span>
+              </div>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Batch Name</label>
+                <input name="name" required placeholder="E.g. Evening Batch A" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
+              </div>
+              
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Course</label>
+                <select name="courseId" required className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all appearance-none">
+                  <option value="">Select a Course</option>
+                  {courses.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Teacher</label>
+                <select name="teacherId" required className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all appearance-none">
+                  <option value="">Assign a Teacher</option>
+                  {teachers.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Time (UTC)</label>
+                <input name="time" required placeholder="E.g. 18:00 UTC" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
+              </div>
+
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Days of Week (Comma separated)</label>
+                <input name="daysOfWeek" required placeholder="Monday, Wednesday, Friday" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
+              </div>
+
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase block mb-1">Live Class Link (Optional)</label>
+                <input name="liveClassLink" placeholder="Zoom or Meet link" className="w-full bg-gray-50 border border-gray-200 focus:border-emerald-custom focus:ring-1 focus:ring-emerald-custom rounded-xl py-2.5 px-4 text-sm outline-none transition-all" />
+              </div>
+            </div>
+            
+            <div className="flex justify-end pt-4">
+              <button disabled={isSubmitting} type="submit" className="px-6 py-2.5 bg-navy-custom hover:bg-navy-900 text-white font-bold text-sm rounded-xl transition-colors">
+                {isSubmitting ? "Creating..." : "Create Batch"}
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {batches.map((batch) => (
+          <div key={batch.id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col relative group">
+             <div className="absolute top-4 right-4 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button onClick={() => {
+                     if(confirm('Delete this batch?')) deleteBatch(batch.id);
+                   }} className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors">
+                  <Trash2 className="w-4 h-4" />
+                </button>
+             </div>
+             
+             <span className="text-[10px] font-bold text-emerald-custom-light uppercase tracking-widest">{batch.course.name}</span>
+             <h3 className="text-lg font-bold text-navy-custom mt-1">{batch.name}</h3>
+             
+             <div className="mt-4 space-y-2 flex-grow">
+               <div className="flex items-center text-sm text-gray-600">
+                  <Users className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="font-semibold text-navy-custom">Teacher:</span> <span className="ml-1">{batch.teacher.user.name}</span>
+               </div>
+               <div className="flex items-center text-sm text-gray-600">
+                  <Calendar className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="font-semibold text-navy-custom">Days:</span> <span className="ml-1">{batch.daysOfWeek.join(", ")}</span>
+               </div>
+               <div className="flex items-center text-sm text-gray-600">
+                  <Clock className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="font-semibold text-navy-custom">Time:</span> <span className="ml-1">{batch.time}</span>
+               </div>
+               <div className="flex items-center text-sm text-gray-600">
+                  <Users className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="font-semibold text-navy-custom">Enrolled:</span> <span className="ml-1">{batch._count.registrations} Students</span>
+               </div>
+             </div>
+
+             <div className="mt-6 pt-4 border-t border-gray-100 flex items-center">
+                {batch.liveClassLink ? (
+                  <a href={batch.liveClassLink} target="_blank" rel="noreferrer" className="flex items-center text-xs font-bold text-emerald-custom hover:text-emerald-600 transition-colors">
+                    <Video className="w-4 h-4 mr-1" />
+                    Live Class Link
+                  </a>
+                ) : (
+                  <span className="flex items-center text-xs font-bold text-gray-400">
+                    <Video className="w-4 h-4 mr-1" />
+                    No link provided
+                  </span>
+                )}
+             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
