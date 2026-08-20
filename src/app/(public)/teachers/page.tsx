@@ -136,14 +136,14 @@ export default function TeachersPage() {
   return (
     <div className="space-y-16 pb-20">
       {/* Header Banner */}
-      <section className="bg-emerald-custom py-12 text-center space-y-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-20 pointer-events-none mix-blend-overlay" />
+      <section className="bg-emerald-custom/5 py-12 text-center space-y-4 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.2, mixBlendMode: 'multiply', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
-          <h1 className="text-3xl sm:text-5xl font-black text-white">
+          <h1 className="text-3xl sm:text-5xl font-black text-navy-custom">
             Meet Our Certified Faculty
           </h1>
-          <p className="text-xs sm:text-sm text-emerald-50 font-semibold uppercase tracking-wide">
-            Learn from Ijazah-certified scholars and experienced educators dedicated to your success.
+          <p className="text-xs sm:text-sm text-gray-500 font-semibold uppercase tracking-wide">
+            Our tutors hold prestigious Ijazahs and degrees from leading Islamic Universities.
           </p>
         </div>
       </section>

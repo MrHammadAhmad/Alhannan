@@ -96,24 +96,25 @@ export default function TeacherProfilePage({ params }: { params: Promise<{ id: s
   return (
     <div className="space-y-16 pb-20">
       {/* Profile Header */}
-      <section className="bg-emerald-custom py-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-20 pointer-events-none mix-blend-overlay" />
+      <section className="bg-emerald-custom/5 py-12 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.2, mixBlendMode: 'multiply', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             {/* Avatar Circle */}
-            <div className={`w-24 h-24 sm:w-32 sm:h-32 rounded-2xl ${teacher.avatarColor} text-white flex items-center justify-center font-black text-4xl sm:text-5xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 shrink-0`}>
-              {teacher.name.charAt(0)}
+            <div className={`w-24 h-24 sm:w-32 sm:h-32 rounded-2xl ${teacher.avatarColor} text-white flex items-center justify-center font-black text-4xl sm:text-5xl shadow-md shrink-0`}>
+              {teacher.name.split(" ").slice(-1)[0].charAt(0)}
             </div>
 
             {/* Title / Meta */}
             <div className="space-y-4 text-center md:text-left rtl:md:text-right flex-grow">
               <div>
-                <span className="px-2.5 py-0.5 rounded bg-white/20 text-white text-[10px] uppercase font-extrabold tracking-wide">
+                <span className="px-2.5 py-0.5 rounded bg-emerald-custom/10 text-emerald-custom text-[10px] uppercase font-extrabold tracking-wide">
                   Certified {teacher.gender} Scholar
                 </span>
-                <h1 className="text-2xl sm:text-4xl font-extrabold text-white mt-2">
+                <h1 className="text-2xl sm:text-4xl font-extrabold text-navy-custom mt-2">
                   {teacher.name}
                 </h1>
+                <p className="text-sm font-semibold text-gray-500">{teacher.title}</p>
               </div>
 
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-xs font-bold text-gray-600">
