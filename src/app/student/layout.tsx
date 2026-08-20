@@ -8,7 +8,6 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
   const sidebarItems = [
     { name: "Dashboard", path: "/student", icon: LayoutDashboard },
     { name: "My Classes", path: "/student/classes", icon: Video },
-    { name: "Attendance", path: "/student/attendance", icon: Calendar },
     { name: "Fee Status", path: "/student/fees", icon: DollarSign },
     { name: "Profile", path: "/student/profile", icon: Settings },
   ];
