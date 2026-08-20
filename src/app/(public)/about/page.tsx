@@ -23,7 +23,7 @@ export default function AboutPage() {
     <div className="space-y-20 pb-20">
       {/* Page Hero */}
       <section className="bg-emerald-custom/5 py-16 text-center space-y-4 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.2, mixBlendMode: 'multiply', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/hero.png')", opacity: 0.3, mixBlendMode: 'multiply', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
           <span className="text-xs font-bold text-emerald-custom uppercase tracking-widest bg-emerald-custom/10 px-3 py-1 rounded-full">
             Who We Are
