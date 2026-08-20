@@ -101,7 +101,7 @@ export default async function TeacherDashboardPage() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
-                 <Link href={`/teacher/batches/${batch.id}/attendance`} className="text-xs font-bold text-emerald-custom hover:text-emerald-700 transition-colors">
+                 <Link href={`/teacher/classes/${batch.id}`} className="text-xs font-bold text-emerald-custom hover:text-emerald-700 transition-colors">
                     Mark Attendance →
                  </Link>
                  
