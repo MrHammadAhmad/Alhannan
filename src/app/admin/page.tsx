@@ -2,6 +2,8 @@ import React from "react";
 import { prisma } from "@/lib/prisma";
 import { Users, GraduationCap, BookOpen, Clock } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardPage() {
   // Fetch aggregate stats
   const [

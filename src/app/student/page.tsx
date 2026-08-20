@@ -5,6 +5,8 @@ import { authOptions } from "@/lib/auth";
 import { Video, Calendar, Clock, BookOpen } from "lucide-react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function StudentDashboardPage() {
   const session = await getServerSession(authOptions);
 
