@@ -44,12 +44,14 @@ interface CourseDetails {
     q: string;
     a: string;
   }[];
+  image?: string;
 }
 
 const mockCourseData: Record<string, CourseDetails> = {
   "noorani-qaida": {
     title: "Noorani Qaida Phonics",
     category: "Quran Basics",
+    image: "https://i.pinimg.com/1200x/40/3a/eb/403aeb836676cce96bb8b33a86827fca.jpg",
     tagline: "Build a strong foundation for fluent, beautiful Arabic recitation from day one.",
     desc: "This course is the vital first step for children and adult beginners. It focuses on the letters of the Arabic alphabet, correct pronunciation points (Makharij), phonetic joints, and vowel markings. Under the 1-on-1 guidance of our patient tutors, you will master the rules of joining letters to confidently read full Arabic words and verses.",
     duration: "3-4 Months (36 Sessions)",
@@ -460,7 +462,7 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Title & Info */}
-            <div className="lg:col-span-8 space-y-6">
+            <div className="lg:col-span-8 space-y-8">
               <span className="px-3 py-1 rounded-full bg-emerald-custom text-xs font-bold uppercase tracking-wider">
                 {course.category}
               </span>
@@ -492,7 +494,15 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
             </div>
 
             {/* Sidebar CTA block */}
-            <div className="lg:col-span-4 bg-white text-navy-custom p-6 rounded-2xl shadow-2xl border border-gray-100 space-y-6">
+            <div className="lg:col-span-4 space-y-6">
+              {course.image && (
+                <div className="w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-emerald-custom/30 relative transform hover:scale-105 transition-transform duration-500">
+                  <img src={course.image} className="w-full h-full object-cover" alt={course.title} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-custom/40 to-transparent" />
+                </div>
+              )}
+              
+              <div className="bg-white text-navy-custom p-6 rounded-3xl shadow-2xl border border-gray-100 space-y-6">
               <div className="space-y-2">
                 <span className="text-xs text-gray-400 font-bold block">Tuition Fees starts at:</span>
                 <div className="flex items-baseline space-x-2">
