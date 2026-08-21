@@ -358,9 +358,9 @@ const mockCourseData: Record<string, CourseDetails> = {
     ]
   },
   "hadith-studies": {
-    title: "Hadith Studies (Riyadhus Saliheen)",
+    title: "Hadith Studies",
     category: "Prophetic Traditions",
-    image: "https://images.unsplash.com/photo-1616688127644-88fc56641566?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    image: "https://i.pinimg.com/736x/02/a4/94/02a4940006f340e709d363c74106054d.jpg",
     tagline: "Learn the sayings and model character of the Prophet (PBUH).",
     desc: "Studies Riyadhus Saliheen, the classic compilation of authentic traditions. Focuses on character, purification of the heart, etiquettes, and community interactions.",
     duration: "6 Months (48 Sessions)",
