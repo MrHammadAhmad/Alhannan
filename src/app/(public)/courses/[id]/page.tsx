@@ -404,9 +404,9 @@ const mockCourseData: Record<string, CourseDetails> = {
     ]
   },
   "hajj-information": {
-    title: "Hajj & Umrah Information Guide",
+    title: "Hajj & Umrah Guide",
     category: "Islamic Practices",
-    image: "https://images.unsplash.com/photo-1565552643982-14dc298b42fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    image: "https://i.pinimg.com/1200x/68/57/44/685744aede2497799f1622e158e48ec1.jpg",
     tagline: "Prepare practically and spiritually for the journey of a lifetime.",
     desc: "A comprehensive practical guide explaining the rules, supplications, and steps to perform Hajj and Umrah. Perfect for prospective pilgrims wanting to perform their rituals correctly according to the Sunnah.",
     duration: "1 Month (12 Sessions)",
