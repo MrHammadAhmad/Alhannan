@@ -1,5 +1,4 @@
 "use client";
-// sample comment
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -80,8 +79,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                 key={item.path}
                 href={item.path}
                 className={`flex items-center space-x-3 rtl:space-x-reverse px-3 py-2.5 rounded-lg text-xs font-bold transition-all ${isActive
-                    ? "bg-emerald-custom text-white shadow-md"
-                    : "hover:bg-navy-light text-gray-400 hover:text-white"
+                  ? "bg-emerald-custom text-white shadow-md"
+                  : "hover:bg-navy-light text-gray-400 hover:text-white"
                   }`}
               >
                 <Icon className="h-4.5 w-4.5 shrink-0" />
