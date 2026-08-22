@@ -9,7 +9,8 @@ export default async function BatchesPage() {
       include: {
         course: true,
         teacher: { include: { user: true } },
-        _count: { select: { registrations: true } }
+        _count: { select: { registrations: true } },
+        linkHistory: { orderBy: { createdAt: 'desc' } }
       }
     }),
     prisma.course.findMany({ where: { isActive: true }, select: { id: true, name: true } }),

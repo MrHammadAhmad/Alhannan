@@ -17,7 +17,8 @@ export default async function StudentClassesPage() {
           course: true,
           batch: {
             include: {
-              teacher: { include: { user: true } }
+              teacher: { include: { user: true } },
+              linkHistory: { orderBy: { createdAt: 'desc' } }
             }
           }
         }
@@ -72,7 +73,27 @@ export default async function StudentClassesPage() {
                </div>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-gray-100">
+            {reg.batch?.linkHistory && reg.batch.linkHistory.length > 0 && (
+              <div className="mt-6 pt-4 border-t border-gray-100 space-y-2">
+                <span className="text-xs font-bold text-gray-500 uppercase flex items-center mb-1">
+                  <Clock className="w-3 h-3 mr-1.5" /> Previous Links
+                </span>
+                <div className="space-y-1.5 max-h-24 overflow-y-auto pr-2 custom-scrollbar">
+                  {reg.batch.linkHistory.map((historyItem: any) => (
+                    <div key={historyItem.id} className="flex justify-between items-center bg-gray-50 p-2 rounded-lg text-[10px]">
+                       <a href={historyItem.url} target="_blank" rel="noreferrer" className="text-emerald-600 hover:text-emerald-700 font-semibold truncate max-w-[60%]">
+                         {historyItem.url}
+                       </a>
+                       <span className="text-gray-400 whitespace-nowrap">
+                         {new Date(historyItem.createdAt).toLocaleDateString()} {new Date(historyItem.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                       </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-6 pt-4 border-t border-gray-100">
                {reg.batch?.liveClassLink ? (
                  <a 
                    href={reg.batch.liveClassLink}

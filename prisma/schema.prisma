@@ -101,6 +101,7 @@ model Batch {
   registrations Registration[]
   recordings  ClassRecording[]
   attendance  AttendanceRecord[]
+  linkHistory LiveLinkHistory[]
 }
 
 model Registration {
@@ -157,4 +158,12 @@ model ClassRecording {
   url       String
   classDate DateTime
   uploadedBy String
+}
+
+model LiveLinkHistory {
+  id        String   @id @default(cuid())
+  batchId   String
+  batch     Batch    @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  url       String
+  createdAt DateTime @default(now())
 }

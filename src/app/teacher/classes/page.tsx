@@ -14,7 +14,10 @@ export default async function TeacherClassesPage() {
       batches: {
         include: {
           course: true,
-          _count: { select: { registrations: true } }
+          _count: { select: { registrations: true } },
+          linkHistory: {
+            orderBy: { createdAt: 'desc' }
+          }
         }
       }
     }

@@ -62,6 +62,27 @@ export function TeacherClassesClient({ batches }: { batches: any[] }) {
             </div>
 
             <div className="mt-6 pt-4 border-t border-gray-100 space-y-4">
+               {/* Previous Links History */}
+               {batch.linkHistory && batch.linkHistory.length > 0 && (
+                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <label className="text-xs font-bold text-gray-500 uppercase flex items-center mb-2">
+                      <Clock className="w-4 h-4 mr-1.5" /> Previous Links
+                    </label>
+                    <div className="space-y-2 max-h-32 overflow-y-auto pr-2 custom-scrollbar">
+                      {batch.linkHistory.map((historyItem: any) => (
+                        <div key={historyItem.id} className="flex justify-between items-center bg-white p-2 rounded-lg border border-gray-100 shadow-sm text-xs">
+                           <a href={historyItem.url} target="_blank" className="text-emerald-600 hover:text-emerald-700 font-semibold truncate max-w-[60%]">
+                             {historyItem.url}
+                           </a>
+                           <span className="text-gray-400 whitespace-nowrap">
+                             {new Date(historyItem.createdAt).toLocaleDateString()} {new Date(historyItem.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                           </span>
+                        </div>
+                      ))}
+                    </div>
+                 </div>
+               )}
+
                {/* Live Link Section */}
                <div className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
                   <div className="flex justify-between items-center mb-2">

@@ -129,18 +129,40 @@ export function BatchesClient({ batches, courses, teachers }: { batches: any[], 
                </div>
              </div>
 
-             <div className="mt-6 pt-4 border-t border-gray-100 flex items-center">
-                {batch.liveClassLink ? (
-                  <a href={batch.liveClassLink} target="_blank" rel="noreferrer" className="flex items-center text-xs font-bold text-emerald-custom hover:text-emerald-600 transition-colors">
-                    <Video className="w-4 h-4 mr-1" />
-                    Live Class Link
-                  </a>
-                ) : (
-                  <span className="flex items-center text-xs font-bold text-gray-400">
-                    <Video className="w-4 h-4 mr-1" />
-                    No link provided
-                  </span>
+             <div className="mt-6 pt-4 border-t border-gray-100">
+                {batch.linkHistory && batch.linkHistory.length > 0 && (
+                  <div className="mb-4 space-y-2">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase flex items-center mb-1">
+                      <Clock className="w-3 h-3 mr-1.5" /> Previous Links
+                    </span>
+                    <div className="space-y-1 max-h-20 overflow-y-auto pr-2 custom-scrollbar">
+                      {batch.linkHistory.map((historyItem: any) => (
+                        <div key={historyItem.id} className="flex justify-between items-center text-[10px]">
+                           <a href={historyItem.url} target="_blank" rel="noreferrer" className="text-emerald-500 hover:text-emerald-600 truncate max-w-[65%]">
+                             {historyItem.url}
+                           </a>
+                           <span className="text-gray-400 whitespace-nowrap">
+                             {new Date(historyItem.createdAt).toLocaleDateString()} {new Date(historyItem.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                           </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 )}
+                
+                <div className="flex items-center">
+                  {batch.liveClassLink ? (
+                    <a href={batch.liveClassLink} target="_blank" rel="noreferrer" className="flex items-center text-xs font-bold text-emerald-custom hover:text-emerald-600 transition-colors">
+                      <Video className="w-4 h-4 mr-1" />
+                      Current Live Class Link
+                    </a>
+                  ) : (
+                    <span className="flex items-center text-xs font-bold text-gray-400">
+                      <Video className="w-4 h-4 mr-1" />
+                      No link provided
+                    </span>
+                  )}
+                </div>
              </div>
           </div>
         ))}

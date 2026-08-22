@@ -7,7 +7,12 @@ export async function updateLiveLink(batchId: string, link: string) {
   try {
     await prisma.batch.update({
       where: { id: batchId },
-      data: { liveClassLink: link }
+      data: { 
+        liveClassLink: link,
+        linkHistory: {
+          create: { url: link }
+        }
+      }
     });
     revalidatePath("/teacher/classes");
     return { success: true };
