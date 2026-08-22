@@ -8,10 +8,14 @@ import Link from "next/link";
 export function TeacherClassesClient({ batches }: { batches: any[] }) {
   const [editingLink, setEditingLink] = useState<string | null>(null);
   const [linkInput, setLinkInput] = useState("");
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const handleSaveLink = async (batchId: string) => {
+    if (!linkInput.trim()) return;
     await updateLiveLink(batchId, linkInput);
     setEditingLink(null);
+    setSuccessMessage("Link sent successfully to all students and admin!");
+    setTimeout(() => setSuccessMessage(null), 3000);
   };
 
   return (
@@ -59,34 +63,55 @@ export function TeacherClassesClient({ batches }: { batches: any[] }) {
 
             <div className="mt-6 pt-4 border-t border-gray-100 space-y-4">
                {/* Live Link Section */}
-               <div>
-                  <label className="text-xs font-bold text-gray-400 uppercase block mb-2">Live Class Link</label>
+               <div className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-xs font-bold text-emerald-800 uppercase flex items-center">
+                      <Video className="w-4 h-4 mr-1.5" /> Live Class Link
+                    </label>
+                  </div>
+                  
                   {editingLink === batch.id ? (
-                    <div className="flex space-x-2">
+                    <div className="flex flex-col sm:flex-row gap-2">
                        <input 
                          autoFocus
                          value={linkInput}
                          onChange={(e) => setLinkInput(e.target.value)}
-                         className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none"
-                         placeholder="https://zoom.us/j/..."
+                         className="flex-1 bg-white border border-emerald-200 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-xl px-3 py-2 text-sm outline-none"
+                         placeholder="Paste Google Meet or Zoom link here..."
                        />
-                       <button onClick={() => handleSaveLink(batch.id)} className="p-2 bg-emerald-custom hover:bg-emerald-600 text-white rounded-xl">
-                          <CheckCircle className="w-4 h-4" />
-                       </button>
+                       <div className="flex space-x-2">
+                         <button onClick={() => setEditingLink(null)} className="px-3 py-2 text-xs font-bold text-gray-500 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors">
+                            Cancel
+                         </button>
+                         <button onClick={() => handleSaveLink(batch.id)} className="px-4 py-2 bg-emerald-custom hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition-colors whitespace-nowrap flex items-center">
+                            <CheckCircle className="w-4 h-4 mr-1.5" /> Send Link
+                         </button>
+                       </div>
                     </div>
                   ) : (
-                    <div className="flex justify-between items-center bg-gray-50 p-3 rounded-xl border border-gray-100">
-                       <a href={batch.liveClassLink || "#"} target="_blank" className="flex items-center text-sm font-semibold text-navy-custom truncate max-w-[200px]">
-                         <Video className="w-4 h-4 mr-2 text-gray-400" />
-                         {batch.liveClassLink || "No link provided"}
-                       </a>
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3 rounded-xl border border-emerald-100">
+                       {batch.liveClassLink ? (
+                         <a href={batch.liveClassLink} target="_blank" className="flex items-center text-sm font-semibold text-emerald-600 hover:text-emerald-700 truncate w-full sm:max-w-[70%]">
+                           <Video className="w-4 h-4 mr-2 flex-shrink-0" />
+                           <span className="truncate">{batch.liveClassLink}</span>
+                         </a>
+                       ) : (
+                         <span className="text-sm text-gray-400 italic">No link assigned yet</span>
+                       )}
+                       
                        <button onClick={() => {
                          setEditingLink(batch.id);
                          setLinkInput(batch.liveClassLink || "");
-                       }} className="text-gray-400 hover:text-emerald-custom transition-colors">
-                         <Edit2 className="w-4 h-4" />
+                       }} className="w-full sm:w-auto px-4 py-2 bg-navy-custom hover:bg-navy-800 text-white text-xs font-bold rounded-xl transition-colors shadow-sm flex items-center justify-center">
+                         {batch.liveClassLink ? "Update Link" : "Send Link"}
                        </button>
                     </div>
+                  )}
+
+                  {successMessage && editingLink !== batch.id && (
+                    <p className="mt-2 text-xs font-semibold text-emerald-600 animate-pulse">
+                      ✓ {successMessage}
+                    </p>
                   )}
                </div>
 
